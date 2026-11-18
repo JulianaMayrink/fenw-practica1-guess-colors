@@ -62,4 +62,60 @@ FENW.Game = class {
 
     return { black: black, white: white };
   }
+
+  addColor(colorId) {
+    if (this.gameFinished || this.currentGuess.length >= this.positions) {
+      return false;
+    }
+
+    this.currentGuess.push(colorId);
+    return true;
+  }
+
+  removeLastColor() {
+    if (this.gameFinished) {
+      return false;
+    }
+
+    return this.currentGuess.pop() !== undefined;
+  }
+
+  isGuessComplete() {
+    return this.currentGuess.length === this.positions;
+  }
+
+  submitGuess() {
+    if (!this.isGuessComplete()) {
+      return null;
+    }
+
+    const result = this.evaluateGuess(this.secretCode, this.currentGuess);
+
+    this.attemptHistory.unshift({
+      guess: [...this.currentGuess],
+      blackPegs: result.black,
+      whitePegs: result.white
+    });
+
+    if (result.black === this.positions || this.attemptHistory.length >= this.maxAttempts) {
+      this.gameFinished = true;
+    }
+
+    this.currentGuess = [];
+
+    return result;
+  }
+
+  isWon() {
+    const last = this.attemptHistory[0];
+    return this.gameFinished && Boolean(last) && last.blackPegs === this.positions;
+  }
+
+  isLost() {
+    return this.gameFinished && !this.isWon();
+  }
+
+  attemptsLeft() {
+    return this.maxAttempts - this.attemptHistory.length;
+  }
 };
