@@ -43,12 +43,70 @@
   </header>
 
   <main class="container">
-    <section class="surface p-4 p-md-5 text-center">
-      <h1 class="page-title display-5 mb-3">Bienvenido a Guess Colors</h1>
-      <p class="page-subtitle lead mb-4">
-        Descubre la combinación secreta de cuatro colores antes de agotar tus intentos.
+    <section class="hero surface p-4 p-md-5 text-center">
+      <span class="hero__eyebrow">Juego de ingenio</span>
+      <h1 class="hero__title">Adivina la combinación secreta</h1>
+      <p class="hero__lead">
+        El sistema esconde cuatro colores. En cada intento recibirás pistas y tendrás que
+        deducir cuáles son y en qué orden están. Dispones de doce intentos.
       </p>
-      <a class="btn btn-primary btn-lg px-4" href="play.html">Empezar a jugar</a>
+
+      <div class="hero__colors" id="heroColors"></div>
+
+      <div class="d-flex flex-wrap justify-content-center gap-3 mt-4">
+        <a class="btn btn-primary btn-lg px-4" href="play.html">Empezar a jugar</a>
+        <a class="btn btn-outline-secondary btn-lg px-4" href="records.html">Ver records</a>
+      </div>
+    </section>
+
+    <section class="row g-4 mt-1">
+      <div class="col-md-5">
+        <article class="surface h-100 p-4">
+          <h2 class="h5 mb-3">Cómo se juega</h2>
+          <ol class="steps mb-0">
+            <li>Elige cuatro colores y envíalos como intento.</li>
+            <li>Recibe las fichas de pista de esa jugada.</li>
+            <li>Deduce la combinación antes de agotar los intentos.</li>
+          </ol>
+        </article>
+      </div>
+
+      <div class="col-md-7">
+        <article class="surface h-100 p-4">
+          <h2 class="h5 mb-3">Qué significa cada pista</h2>
+
+          <div class="rule-row">
+            <span class="rule-row__pegs"><span class="peg peg--black"></span></span>
+            <span><strong>Ficha negra:</strong> el color es correcto y está en la posición correcta.</span>
+          </div>
+
+          <div class="rule-row">
+            <span class="rule-row__pegs"><span class="peg peg--white"></span></span>
+            <span><strong>Ficha blanca:</strong> el color forma parte de la combinación, pero en otra posición.</span>
+          </div>
+
+          <div class="rule-row">
+            <span class="rule-row__pegs"><span class="peg peg--empty"></span></span>
+            <span><strong>Sin ficha:</strong> ese color no está en la combinación o ya se ha contado antes.</span>
+          </div>
+
+          <p class="page-subtitle small mt-3 mb-0">
+            Las pistas solo indican cuántos aciertos hay de cada tipo: no revelan a qué colores
+            corresponden ni en qué posiciones están. Los colores pueden repetirse.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section class="surface p-4 mt-4 text-center">
+      <h2 class="h5 mb-1">¿Ya tienes cuenta?</h2>
+      <p class="page-subtitle mb-3">
+        Inicia sesión para registrar tus puntuaciones, o crea una cuenta nueva.
+      </p>
+      <div class="d-flex flex-wrap justify-content-center gap-2">
+        <a class="btn btn-outline-secondary" href="login.html">Iniciar sesión</a>
+        <a class="btn btn-outline-secondary" href="register.html">Crear cuenta</a>
+      </div>
     </section>
   </main>
 
@@ -57,6 +115,9 @@
   </footer>
 
   <script src="lib/bootstrap/bootstrap.bundle.min.js"></script>
+  <script src="js/models/Game.js"></script>
+  <script src="js/api/ApiClient.js"></script>
+  <script src="js/pages/home.js"></script>
 </body>
 
 </html>
