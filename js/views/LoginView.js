@@ -50,7 +50,6 @@ FENW.LoginView = class {
   createMessageArea() {
     const area = document.createElement('div');
     area.className = 'alert d-none mt-3';
-    area.setAttribute('role', 'alert');
     this.form.appendChild(area);
     return area;
   }
