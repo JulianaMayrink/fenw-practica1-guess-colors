@@ -113,6 +113,12 @@ main {
   margin-top: 1.5rem;
 }
 
+.form-narrow {
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .site-footer {
   flex-shrink: 0;
   background: var(--color-surface);
