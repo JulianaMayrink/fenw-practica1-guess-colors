@@ -58,6 +58,27 @@ body {
   color: #ffffff;
 }
 
+.brand-logo {
+  height: 30px;
+  width: auto;
+  display: block;
+}
+
+.nav-icon {
+  width: 15px;
+  height: 15px;
+  margin-right: 0.35rem;
+  vertical-align: -2px;
+}
+
+.hero__logo {
+  display: block;
+  width: 100%;
+  max-width: 380px;
+  height: auto;
+  margin: 0 auto 1.5rem;
+}
+
 .brand-dots {
   display: inline-flex;
   gap: 3px;
@@ -217,10 +238,12 @@ main {
 }
 
 .peg {
+  display: inline-block;
   width: 15px;
   height: 15px;
   border-radius: 50%;
   border: 1px solid rgba(15, 23, 42, 0.25);
+  vertical-align: middle;
 }
 
 .peg--black {
