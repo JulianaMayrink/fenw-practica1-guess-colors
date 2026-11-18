@@ -69,7 +69,6 @@ FENW.GameView = class {
     const banner = document.createElement('div');
     banner.id = 'endBanner';
     banner.className = 'end-banner end-banner--' + (won ? 'win' : 'lose');
-    banner.setAttribute('aria-live', 'polite');
 
     const title = document.createElement('p');
     title.className = 'end-banner__title mb-1';
@@ -179,7 +178,6 @@ FENW.GameView = class {
       swatch.type = 'button';
       swatch.className = 'color-swatch';
       swatch.style.background = color.name;
-      swatch.setAttribute('aria-label', color.name);
       swatch.addEventListener('click', () => this.pickColor(color.id));
       this.paletteElement.appendChild(swatch);
     });
