@@ -27,6 +27,8 @@ FENW.GameView = class {
     this.game.start();
     this.introPanel.classList.add('d-none');
     this.gamePanel.classList.remove('d-none');
+    this.clearMessage();
+    this.enablePalette();
     this.render();
   }
 
@@ -37,7 +39,71 @@ FENW.GameView = class {
     }
 
     this.game.submitGuess();
+    this.clearMessage();
     this.render();
+    this.checkGameEnd();
+  }
+
+  checkGameEnd() {
+    if (!this.game.gameFinished) {
+      return;
+    }
+
+    this.sendButton.disabled = true;
+    this.undoButton.disabled = true;
+    this.disablePalette();
+
+    if (this.game.isWon()) {
+      this.showMessage('¡Has ganado! Has acertado la combinación secreta.', 'success');
+    } else {
+      this.showMessage('Has perdido. La combinación secreta era ' + this.secretCodeText() + '.', 'danger');
+    }
+
+    this.renderReplayButton();
+  }
+
+  secretCodeText() {
+    return this.game.secretCode
+      .map((colorId) => this.colorLabel(colorId))
+      .join(', ');
+  }
+
+  colorLabel(colorId) {
+    const labels = {
+      red: 'rojo',
+      green: 'verde',
+      blue: 'azul',
+      yellow: 'amarillo',
+      white: 'blanco'
+    };
+    const name = this.colorName(colorId);
+    return labels[name] || name;
+  }
+
+  renderReplayButton() {
+    if (this.historyElement.querySelector('#replayBtn')) {
+      return;
+    }
+
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.id = 'replayBtn';
+    button.className = 'btn btn-primary mt-3';
+    button.textContent = 'Jugar otra vez';
+    button.addEventListener('click', () => this.startGame());
+    this.historyElement.appendChild(button);
+  }
+
+  disablePalette() {
+    this.paletteElement.querySelectorAll('.color-swatch').forEach((swatch) => {
+      swatch.disabled = true;
+    });
+  }
+
+  enablePalette() {
+    this.paletteElement.querySelectorAll('.color-swatch').forEach((swatch) => {
+      swatch.disabled = false;
+    });
   }
 
   undoLastColor() {
