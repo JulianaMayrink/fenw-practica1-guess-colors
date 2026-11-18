@@ -59,8 +59,34 @@ FENW.GameView = class {
       this.showMessage('Has perdido. La combinación secreta era ' + this.secretCodeText() + '.', 'danger');
     }
 
+    this.renderEndBanner();
     this.renderSecretReveal();
     this.renderReplayButton();
+  }
+
+  renderEndBanner() {
+    const won = this.game.isWon();
+    const banner = document.createElement('div');
+    banner.id = 'endBanner';
+    banner.className = 'end-banner end-banner--' + (won ? 'win' : 'lose');
+    banner.setAttribute('aria-live', 'polite');
+
+    const title = document.createElement('p');
+    title.className = 'end-banner__title mb-1';
+    title.textContent = won ? '¡Has ganado!' : 'Has perdido';
+
+    const used = this.game.attemptHistory.length;
+    const attemptWord = used === 1 ? ' intento.' : ' intentos.';
+    const detail = document.createElement('p');
+    detail.className = 'end-banner__detail mb-0';
+    detail.textContent = won
+      ? 'Has acertado la combinación secreta en ' + used + attemptWord
+      : 'Se han agotado los ' + this.game.maxAttempts + ' intentos.';
+
+    banner.appendChild(title);
+    banner.appendChild(detail);
+    this.historyElement.appendChild(banner);
+    banner.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
   }
 
   renderSecretReveal() {

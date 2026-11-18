@@ -244,6 +244,52 @@ main {
   color: var(--color-muted);
 }
 
+.end-banner {
+  margin-top: 1rem;
+  padding: 1rem 1.15rem;
+  border-radius: var(--radius-md);
+  border-left: 5px solid;
+  animation: end-banner-pop 0.35s ease-out;
+}
+
+.end-banner--win {
+  background: #ecfdf5;
+  border-left-color: var(--color-success);
+  color: #065f46;
+}
+
+.end-banner--lose {
+  background: #fef2f2;
+  border-left-color: var(--color-danger);
+  color: #7f1d1d;
+}
+
+.end-banner__title {
+  font-size: 1.15rem;
+  font-weight: 700;
+}
+
+.end-banner__detail {
+  font-size: 0.9rem;
+}
+
+@keyframes end-banner-pop {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .end-banner {
+    animation: none;
+  }
+}
+
 .secret-reveal {
   display: flex;
   align-items: center;
