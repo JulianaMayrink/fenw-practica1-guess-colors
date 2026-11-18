@@ -33,4 +33,33 @@ FENW.Game = class {
 
     return code;
   }
+
+  evaluateGuess(secret, guess) {
+    const used = new Array(secret.length).fill(false);
+    let black = 0;
+    let white = 0;
+
+    for (let i = 0; i < secret.length; i++) {
+      if (guess[i] === secret[i]) {
+        black++;
+        used[i] = true;
+      }
+    }
+
+    for (let i = 0; i < guess.length; i++) {
+      if (guess[i] === secret[i]) {
+        continue;
+      }
+
+      for (let j = 0; j < secret.length; j++) {
+        if (!used[j] && guess[i] === secret[j]) {
+          white++;
+          used[j] = true;
+          break;
+        }
+      }
+    }
+
+    return { black: black, white: white };
+  }
 };
