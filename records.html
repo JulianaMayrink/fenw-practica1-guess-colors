@@ -44,12 +44,33 @@
 
   <main class="container">
     <section class="surface p-4 p-md-5">
-      <h1 class="page-title h3 mb-1">Mejores puntuaciones</h1>
-      <p class="page-subtitle mb-4">
-        Los diez mejores records registrados en el servidor.
-      </p>
+      <div class="d-flex flex-wrap justify-content-between align-items-center gap-3 mb-4">
+        <div>
+          <h1 class="page-title h3 mb-1">Mejores puntuaciones</h1>
+          <p class="page-subtitle mb-0">
+            Los diez mejores records registrados en el servidor.
+          </p>
+        </div>
+        <button class="btn btn-primary px-4" type="button" id="loadScoresBtn">Cargar records</button>
+      </div>
 
-      <button class="btn btn-primary px-4" type="button" id="loadScoresBtn">Cargar records</button>
+      <p class="records-status" id="scoresStatus">Pulsa «Cargar records» para consultar las puntuaciones.</p>
+
+      <div class="table-responsive d-none" id="scoresWrapper">
+        <table class="table records-table">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Usuario</th>
+              <th scope="col">Puntuación</th>
+              <th scope="col">Intentos</th>
+              <th scope="col">Tiempo</th>
+              <th scope="col">Fecha</th>
+            </tr>
+          </thead>
+          <tbody id="scoresBody"></tbody>
+        </table>
+      </div>
     </section>
   </main>
 
@@ -59,6 +80,9 @@
 
   <script src="lib/jquery/jquery.min.js"></script>
   <script src="lib/bootstrap/bootstrap.bundle.min.js"></script>
+  <script src="js/api/ApiClient.js"></script>
+  <script src="js/views/RecordsView.js"></script>
+  <script src="js/pages/records.js"></script>
 </body>
 
 </html>

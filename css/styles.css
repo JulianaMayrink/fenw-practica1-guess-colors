@@ -290,6 +290,52 @@ main {
   }
 }
 
+.records-table {
+  margin-bottom: 0;
+}
+
+.records-table thead th {
+  border-bottom: 2px solid var(--color-border);
+  color: var(--color-muted);
+  font-size: 0.78rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.records-table tbody tr:nth-child(odd) {
+  background: #f8fafc;
+}
+
+.records-table tbody td {
+  vertical-align: middle;
+}
+
+.rank-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--color-primary-soft);
+  color: var(--color-primary-dark);
+  font-weight: 700;
+  font-size: 0.85rem;
+}
+
+.record-score {
+  font-weight: 700;
+}
+
+.records-status {
+  color: var(--color-muted);
+}
+
+.records-status--error {
+  color: var(--color-danger);
+}
+
 .secret-reveal {
   display: flex;
   align-items: center;
