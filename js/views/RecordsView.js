@@ -32,6 +32,11 @@ FENW.RecordsView = class {
   render(scores) {
     this.$body.empty();
 
+    if (scores.length === 0) {
+      this.$wrapper.addClass('d-none');
+      return;
+    }
+
     scores.forEach((record, index) => {
       this.$body.append(this.buildRow(record, index));
     });
@@ -40,13 +45,34 @@ FENW.RecordsView = class {
   }
 
   buildRow(record, index) {
+    const position = index + 1;
+    const badge = $('<span>').addClass('rank-badge').text(position);
+
+    if (position <= 3) {
+      badge.addClass('rank-badge--top rank-badge--' + position);
+    }
+
     return $('<tr>')
-      .append($('<td>').append($('<span>').addClass('rank-badge').text(index + 1)))
+      .append($('<td>').append(badge))
       .append($('<td>').text(record.username))
-      .append($('<td>').addClass('record-score').text(record.score))
+      .append($('<td>').addClass('record-score').text(this.formatScore(record.score)))
       .append($('<td>').text(record.attempts))
-      .append($('<td>').text(record.disposedTime + ' s'))
+      .append($('<td>').text(this.formatTime(record.disposedTime)))
       .append($('<td>').text(this.formatDate(record.recordDate)));
+  }
+
+  formatScore(score) {
+    return Number(score).toLocaleString('es-ES');
+  }
+
+  formatTime(seconds) {
+    if (seconds < 60) {
+      return seconds + ' s';
+    }
+
+    const minutes = Math.floor(seconds / 60);
+    const rest = seconds % 60;
+    return minutes + ' min ' + rest + ' s';
   }
 
   formatDate(milliseconds) {

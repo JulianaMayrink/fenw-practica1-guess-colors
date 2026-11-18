@@ -324,6 +324,25 @@ main {
   font-size: 0.85rem;
 }
 
+.rank-badge--1 {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.rank-badge--2 {
+  background: #e2e8f0;
+  color: #334155;
+}
+
+.rank-badge--3 {
+  background: #ffedd5;
+  color: #9a3412;
+}
+
+.rank-badge--top {
+  box-shadow: 0 0 0 2px rgba(15, 23, 42, 0.06);
+}
+
 .record-score {
   font-weight: 700;
 }
