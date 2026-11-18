@@ -6,27 +6,37 @@ FENW.RecordsView = class {
     this.$status = $('#scoresStatus');
     this.$wrapper = $('#scoresWrapper');
     this.$body = $('#scoresBody');
-    this.$button = $('#loadScoresBtn');
+    this.$retry = $('#retryScoresBtn');
   }
 
   init() {
-    this.$button.on('click', () => this.loadScores());
+    this.$retry.on('click', () => this.loadScores());
+    void this.loadScores();
   }
 
   async loadScores() {
-    this.setLoading(true);
     this.showStatus('Cargando records...', false);
+    this.$retry.addClass('d-none');
 
     try {
       const scores = await this.apiClient.getScores();
       this.render(scores);
-      this.showStatus('Se han cargado ' + scores.length + ' records.', false);
+      this.showStatus(this.summary(scores), false);
     } catch (error) {
       this.$wrapper.addClass('d-none');
       this.showStatus(error.message, true);
-    } finally {
-      this.setLoading(false);
+      this.$retry.removeClass('d-none');
     }
+  }
+
+  summary(scores) {
+    if (scores.length === 0) {
+      return 'Todavía no hay puntuaciones registradas.';
+    }
+
+    return scores.length === 1
+      ? 'Se ha cargado 1 record.'
+      : 'Se han cargado ' + scores.length + ' records.';
   }
 
   render(scores) {
@@ -85,10 +95,6 @@ FENW.RecordsView = class {
       hour: '2-digit',
       minute: '2-digit'
     });
-  }
-
-  setLoading(isLoading) {
-    this.$button.prop('disabled', isLoading);
   }
 
   showStatus(text, isError) {

@@ -45,19 +45,19 @@
 
   <main class="container">
     <section class="surface p-4 p-md-5">
-      <div class="d-flex flex-wrap justify-content-between align-items-center gap-3 mb-4">
-        <div>
-          <h1 class="page-title h3 mb-1">Mejores puntuaciones</h1>
-          <p class="page-subtitle mb-0">
-            Los diez mejores records registrados en el servidor.
-          </p>
-        </div>
-        <button class="btn btn-primary px-4" type="button" id="loadScoresBtn">Cargar records</button>
+      <div class="mb-4">
+        <h1 class="page-title h3 mb-1">Mejores puntuaciones</h1>
+        <p class="page-subtitle mb-0">
+          Los diez mejores records registrados en el servidor.
+        </p>
       </div>
 
-      <p class="records-status" id="scoresStatus">Pulsa «Cargar records» para consultar las puntuaciones.</p>
+      <div class="d-flex flex-wrap align-items-center gap-3">
+        <p class="records-status mb-0" id="scoresStatus">Cargando records...</p>
+        <button class="btn btn-outline-secondary d-none" type="button" id="retryScoresBtn">Reintentar</button>
+      </div>
 
-      <div class="table-responsive d-none" id="scoresWrapper">
+      <div class="table-responsive d-none mt-3" id="scoresWrapper">
         <table class="table records-table">
           <thead>
             <tr>
