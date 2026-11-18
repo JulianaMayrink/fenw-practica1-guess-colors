@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Juega a adivinar la combinación secreta de colores.">
+  <title>Jugar · Guess Colors</title>
+  <link rel="stylesheet" href="lib/bootstrap/bootstrap.min.css">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+  <header class="site-header">
+    <nav class="navbar navbar-expand-md container py-3 site-nav">
+      <a class="navbar-brand" href="index.html">
+        <span class="brand-dots">
+          <span style="background:#ef4444"></span>
+          <span style="background:#22c55e"></span>
+          <span style="background:#3b82f6"></span>
+          <span style="background:#eab308"></span>
+          <span style="background:#f8fafc"></span>
+        </span>
+        Guess Colors
+      </a>
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav"
+        aria-controls="mainNav" aria-expanded="false" aria-label="Mostrar menú">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="mainNav">
+        <ul class="navbar-nav me-auto mb-2 mb-md-0">
+          <li class="nav-item"><a class="nav-link" href="index.html">Inicio</a></li>
+          <li class="nav-item"><a class="nav-link active" href="play.html">Jugar</a></li>
+          <li class="nav-item"><a class="nav-link" href="records.html">Records</a></li>
+        </ul>
+        <ul class="navbar-nav mb-2 mb-md-0">
+          <li class="nav-item"><a class="nav-link" href="register.html">Registro</a></li>
+          <li class="nav-item"><a class="nav-link" href="login.html">Login</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section class="surface p-4 p-md-5">
+      <h1 class="page-title h3 mb-1">Partida local</h1>
+      <p class="page-subtitle mb-4">
+        La combinación secreta se genera en tu navegador. Tienes doce intentos para acertarla.
+      </p>
+
+      <button class="btn btn-primary px-4" type="button" id="startBtn">Iniciar partida</button>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    Prácticas de Front-end para Navegadores Web · Máster en Ingeniería Web · E.T.S.I. Sistemas Informáticos (U.P.M.)
+  </footer>
+
+  <script src="lib/bootstrap/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
