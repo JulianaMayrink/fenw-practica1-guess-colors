@@ -235,3 +235,24 @@ main {
 .alert:empty {
   display: none;
 }
+
+.peg-legend {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.8rem;
+  color: var(--color-muted);
+}
+
+.secret-reveal {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+  font-weight: 600;
+}
+
+.secret-reveal .attempt-color {
+  width: 32px;
+  height: 32px;
+}

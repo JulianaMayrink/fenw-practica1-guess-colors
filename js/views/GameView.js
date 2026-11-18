@@ -59,7 +59,26 @@ FENW.GameView = class {
       this.showMessage('Has perdido. La combinación secreta era ' + this.secretCodeText() + '.', 'danger');
     }
 
+    this.renderSecretReveal();
     this.renderReplayButton();
+  }
+
+  renderSecretReveal() {
+    const reveal = document.createElement('div');
+    reveal.className = 'secret-reveal';
+
+    const label = document.createElement('span');
+    label.textContent = 'Combinación secreta:';
+    reveal.appendChild(label);
+
+    this.game.secretCode.forEach((colorId) => {
+      const dot = document.createElement('span');
+      dot.className = 'attempt-color';
+      dot.style.background = this.colorName(colorId);
+      reveal.appendChild(dot);
+    });
+
+    this.historyElement.appendChild(reveal);
   }
 
   secretCodeText() {
