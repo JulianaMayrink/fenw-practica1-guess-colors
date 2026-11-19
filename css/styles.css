@@ -116,7 +116,9 @@ body {
   font-weight: 500;
   border-radius: var(--radius-sm);
   padding: 0.5rem 1rem;
-  transition: color 0.15s ease, background-color 0.15s ease;
+  transition:
+    color 0.15s ease,
+    background-color 0.15s ease;
 }
 
 .site-nav .nav-link:hover {
@@ -194,7 +196,9 @@ main {
   border: 2px solid var(--color-border);
   cursor: pointer;
   padding: 0;
-  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.15s ease;
 }
 
 .color-swatch:hover:not(:disabled) {

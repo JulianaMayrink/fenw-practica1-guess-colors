@@ -2,7 +2,7 @@ window.FENW = window.FENW || {};
 
 FENW.AuthStorage = class {
   constructor(storageKey) {
-    this.storageKey = storageKey || 'fenw.auth.token';
+    this.storageKey = storageKey || "fenw.auth.token";
   }
 
   saveToken(token) {
@@ -47,15 +47,18 @@ FENW.AuthStorage = class {
   }
 
   decodePayload(token) {
-    const base64 = token.replace('Bearer ', '').split('.')[1];
+    const base64 = token.replace("Bearer ", "").split(".")[1];
 
     if (!base64) {
       return null;
     }
 
     try {
-      const normalizado = base64.replaceAll('-', '+').replaceAll('_', '/');
-      const relleno = normalizado.padEnd(normalizado.length + (4 - normalizado.length % 4) % 4, '=');
+      const normalizado = base64.replaceAll("-", "+").replaceAll("_", "/");
+      const relleno = normalizado.padEnd(
+        normalizado.length + ((4 - (normalizado.length % 4)) % 4),
+        "=",
+      );
       return JSON.parse(atob(relleno));
     } catch (error) {
       return null;

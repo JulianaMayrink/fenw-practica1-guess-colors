@@ -22,13 +22,13 @@ conexión a Internet para mostrar datos reales.
 
 ## Páginas
 
-| Página | Archivo | Función |
-|---|---|---|
-| Inicio | `index.html` | Presentación del juego, reglas y accesos directos |
-| Jugar | `play.html` | Partida local: genera la combinación y evalúa los intentos |
-| Records | `records.html` | Los diez mejores records almacenados en el servidor |
-| Registro | `register.html` | Formulario de alta de usuario con validación |
-| Login | `login.html` | Identificación del usuario y almacenamiento del token |
+| Página   | Archivo         | Función                                                    |
+| -------- | --------------- | ---------------------------------------------------------- |
+| Inicio   | `index.html`    | Presentación del juego, reglas y accesos directos          |
+| Jugar    | `play.html`     | Partida local: genera la combinación y evalúa los intentos |
+| Records  | `records.html`  | Los diez mejores records almacenados en el servidor        |
+| Registro | `register.html` | Formulario de alta de usuario con validación               |
+| Login    | `login.html`    | Identificación del usuario y almacenamiento del token      |
 
 ## Reglas del juego
 
@@ -40,11 +40,11 @@ conexión a Internet para mostrar datos reales.
 
 En cada intento se devuelven pistas:
 
-| Pista | Significado |
-|---|---|
-| **Ficha negra** | El color es correcto y está en la posición correcta |
+| Pista            | Significado                                                   |
+| ---------------- | ------------------------------------------------------------- |
+| **Ficha negra**  | El color es correcto y está en la posición correcta           |
 | **Ficha blanca** | El color forma parte de la combinación, pero en otra posición |
-| **Sin ficha** | El color no está en la combinación o ya se ha contado |
+| **Sin ficha**    | El color no está en la combinación o ya se ha contado         |
 
 Las pistas indican únicamente **cuántos** aciertos hay de cada tipo: no revelan
 a qué colores corresponden ni en qué posiciones están.
@@ -53,11 +53,11 @@ a qué colores corresponden ni en qué posiciones están.
 
 Se consume la API de la asignatura en `http://fenw.etsisi.upm.es:4500`.
 
-| Método | Ruta | Uso en la práctica |
-|---|---|---|
-| `GET` | `/game/colors` | Colores disponibles (usado en Inicio y en el juego) |
-| `GET` | `/scores` | Los diez mejores records (página Records) |
-| `GET` | `/users/login` | Inicio de sesión: devuelve el token en la cabecera `Authorization` |
+| Método | Ruta           | Uso en la práctica                                                 |
+| ------ | -------------- | ------------------------------------------------------------------ |
+| `GET`  | `/game/colors` | Colores disponibles (usado en Inicio y en el juego)                |
+| `GET`  | `/scores`      | Los diez mejores records (página Records)                          |
+| `GET`  | `/users/login` | Inicio de sesión: devuelve el token en la cabecera `Authorization` |
 
 El token recibido se guarda en el **almacenamiento web** (`localStorage`) para
 poder usarlo en la segunda práctica. Credenciales de prueba: `user1` / `user1`.
@@ -109,5 +109,5 @@ AJAX (fetch y promesas)
 
 ## Autoría
 
-Práctica individual de la asignatura *Front-end para Navegadores Web* (curso
+Práctica individual de la asignatura _Front-end para Navegadores Web_ (curso
 2026/2027), Máster en Ingeniería Web, E.T.S.I. Sistemas Informáticos (U.P.M.).

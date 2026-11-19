@@ -1,7 +1,7 @@
 window.FENW = window.FENW || {};
 
-document.addEventListener('DOMContentLoaded', async function () {
-  const container = document.getElementById('heroColors');
+document.addEventListener("DOMContentLoaded", async function () {
+  const container = document.getElementById("heroColors");
 
   if (!container) {
     return;
@@ -18,11 +18,11 @@ document.addEventListener('DOMContentLoaded', async function () {
 });
 
 function renderHeroColors(container, colors) {
-  container.innerHTML = '';
+  container.innerHTML = "";
 
   colors.forEach((color) => {
-    const dot = document.createElement('span');
-    dot.className = 'hero__color';
+    const dot = document.createElement("span");
+    dot.className = "hero__color";
     dot.style.background = color.name;
     container.appendChild(dot);
   });

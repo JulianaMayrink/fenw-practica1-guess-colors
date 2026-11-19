@@ -5,11 +5,11 @@ FENW.Game = class {
     this.positions = 4;
     this.maxAttempts = 12;
     this.colors = colors || [
-      { id: 0, name: 'red' },
-      { id: 1, name: 'green' },
-      { id: 2, name: 'blue' },
-      { id: 3, name: 'yellow' },
-      { id: 4, name: 'white' }
+      { id: 0, name: "red" },
+      { id: 1, name: "green" },
+      { id: 2, name: "blue" },
+      { id: 3, name: "yellow" },
+      { id: 4, name: "white" },
     ];
     this.secretCode = [];
     this.currentGuess = [];
@@ -94,10 +94,13 @@ FENW.Game = class {
     this.attemptHistory.unshift({
       guess: [...this.currentGuess],
       blackPegs: result.black,
-      whitePegs: result.white
+      whitePegs: result.white,
     });
 
-    if (result.black === this.positions || this.attemptHistory.length >= this.maxAttempts) {
+    if (
+      result.black === this.positions ||
+      this.attemptHistory.length >= this.maxAttempts
+    ) {
       this.gameFinished = true;
     }
 
@@ -108,7 +111,9 @@ FENW.Game = class {
 
   isWon() {
     const last = this.attemptHistory[0];
-    return this.gameFinished && Boolean(last) && last.blackPegs === this.positions;
+    return (
+      this.gameFinished && Boolean(last) && last.blackPegs === this.positions
+    );
   }
 
   attemptsLeft() {

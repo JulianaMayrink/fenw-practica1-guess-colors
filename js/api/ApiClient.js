@@ -2,38 +2,43 @@ window.FENW = window.FENW || {};
 
 FENW.ApiClient = class {
   constructor(baseUrl) {
-    this.baseUrl = baseUrl || 'http://fenw.etsisi.upm.es:4500';
+    this.baseUrl = baseUrl || "http://fenw.etsisi.upm.es:4500";
   }
 
   async login(username, password) {
-    const params = new URLSearchParams({ username: username, password: password });
-    const response = await fetch(this.buildUrl('/users/login', params), {
-      method: 'GET',
-      headers: { 'Content-Type': 'application/json' }
+    const params = new URLSearchParams({
+      username: username,
+      password: password,
+    });
+    const response = await fetch(this.buildUrl("/users/login", params), {
+      method: "GET",
+      headers: { "Content-Type": "application/json" },
     });
 
     if (!response.ok) {
-      throw new Error('Usuario o contraseña incorrectos');
+      throw new Error("Usuario o contraseña incorrectos");
     }
 
     return this.extractToken(response);
   }
 
   async getScores() {
-    const response = await fetch(this.buildUrl('/scores'), { method: 'GET' });
+    const response = await fetch(this.buildUrl("/scores"), { method: "GET" });
 
     if (!response.ok) {
-      throw new Error('No se han podido obtener los records');
+      throw new Error("No se han podido obtener los records");
     }
 
     return response.json();
   }
 
   async getColors() {
-    const response = await fetch(this.buildUrl('/game/colors'), { method: 'GET' });
+    const response = await fetch(this.buildUrl("/game/colors"), {
+      method: "GET",
+    });
 
     if (!response.ok) {
-      throw new Error('No se han podido obtener los colores');
+      throw new Error("No se han podido obtener los colores");
     }
 
     return response.json();
@@ -41,21 +46,23 @@ FENW.ApiClient = class {
 
   buildUrl(path, params) {
     const url = this.baseUrl + path;
-    return params ? url + '?' + params.toString() : url;
+    return params ? url + "?" + params.toString() : url;
   }
 
   async extractToken(response) {
-    const header = response.headers.get('Authorization');
+    const header = response.headers.get("Authorization");
 
     if (header) {
       return header;
     }
 
     const body = await response.json();
-    const token = typeof body === 'string' ? body : null;
+    const token = typeof body === "string" ? body : null;
 
     if (!token) {
-      throw new Error('Error de inicio de sesión: el servidor no ha devuelto ningún token');
+      throw new Error(
+        "Error de inicio de sesión: el servidor no ha devuelto ningún token",
+      );
     }
 
     return token;
