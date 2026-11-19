@@ -111,10 +111,6 @@ FENW.Game = class {
     return this.gameFinished && Boolean(last) && last.blackPegs === this.positions;
   }
 
-  isLost() {
-    return this.gameFinished && !this.isWon();
-  }
-
   attemptsLeft() {
     return this.maxAttempts - this.attemptHistory.length;
   }
