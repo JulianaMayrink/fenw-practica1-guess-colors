@@ -52,6 +52,12 @@ FENW.ApiClient = class {
     }
 
     const body = await response.json();
-    return typeof body === 'string' ? body : null;
+    const token = typeof body === 'string' ? body : null;
+
+    if (!token) {
+      throw new Error('Error de inicio de sesión: el servidor no ha devuelto ningún token');
+    }
+
+    return token;
   }
 };
