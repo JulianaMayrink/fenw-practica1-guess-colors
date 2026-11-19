@@ -71,6 +71,28 @@ body {
   vertical-align: -2px;
 }
 
+.site-nav-groups {
+  justify-content: space-between;
+}
+
+.nav-group {
+  flex-direction: row;
+  gap: 10px;
+}
+
+@media (max-width: 767.98px) {
+  .site-nav-groups {
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+
+  .nav-group {
+    flex-direction: column;
+    gap: 6px;
+    margin-top: 0.75rem;
+  }
+}
+
 .hero__logo {
   display: block;
   width: 100%;
